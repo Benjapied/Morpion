@@ -94,6 +94,7 @@ while cases_libres(tableau) != [] :
     #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
     nombre = input("Choisissez un nombre pour placer votre croix: ")
     pose_player(tableau,nombre)
+    printTab(tableau)
     pose_bot(tableau)
     printTab(tableau)
 
