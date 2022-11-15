@@ -1,4 +1,6 @@
 #Morpion 
+import random as r
+
 
 def plateau () :
     '''Fonction qui va créer une grille 3x3 de morpion'''
@@ -10,4 +12,81 @@ def plateau () :
         tab.append(tab2) 
     return tab 
 
-print(plateau())
+def printTab(tab): 
+    '''Print un tableau a format tableau et non liste, technique de gitan askip'''
+    for i in range (len(tab)) :
+        print(tab[i])
+        print()
+
+def example() :
+    '''Cette fonction affiche quelle case de la grille correspond à quel chiffre'''
+    tab = []
+    incrémenteur = 1
+    for i in range (3) :
+        tab2 = []
+        for j in range (3) :
+            tab2.append(incrémenteur)
+            incrémenteur = incrémenteur + 1
+        tab.append(tab2)
+    print("Pour placer votre symbole, entrez un chiffre comme dans l'exemple ci-dessous")
+    printTab(tab)
+
+def pose_player(tab,nb) :
+    '''Fonction qui permet au joueur de placer son symbol en fonction du nombre qu'il rentre''' 
+    if nb == '1' :
+        tab[0][0] = 'X' 
+    if nb == '2' :
+        tab[0][1] = 'X' 
+    if nb == '3' :
+        tab[0][2] = 'X' 
+    if nb == '4' :
+        tab[1][0] = 'X' 
+    if nb == '5' :
+        tab[1][1] = 'X' 
+    if nb == '6' :
+        tab[1][2] = 'X' 
+    if nb == '7' :
+        tab[2][0] = 'X' 
+    if nb == '8' :
+        tab[2][1] = 'X' 
+    if nb == '9' :
+        tab[2][2] = 'X' 
+    
+def cases_libres (tab):
+    '''Fonction qui renovoie une liste contenant les cases vides, elle va servir à arreter le jeu si cette liste est vide'''
+    liste = []
+    for i in range (3) :
+        for j in range(3) :
+            if tab[i][j] == ' ' :
+                liste.append((i,j))
+    #Cette liste contient des tuples des coordonnées des cases libres
+    return liste
+                
+def pose_bot (tab) :
+    '''Fonction qui va placer un signe du bot aléatoirement sur la grille'''
+    liste =  cases_libres(tab) 
+    #Cette liste de tuple contenant les coordonnées libres va permettre de ne pas placer de symbol sur une case déja prise
+    #Mais aussi à savoir si le bot peut placer un symbol si la grille est pleine 
+    if liste != []:
+        coo = r.choice(liste)
+        tab[coo[0]][coo[0]] = 'O' 
+        return 
+    else :
+        return 
+
+tableau = plateau()
+printTab(tableau)
+
+example()
+
+nombre = input("Choisissez un nombre pour placer votre croix: ")
+pose_player(tableau,nombre)
+
+printTab(tableau)
+
+print(cases_libres(tableau))
+
+pose_bot(tableau)
+
+printTab(tableau)
+    
