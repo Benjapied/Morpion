@@ -74,13 +74,17 @@ def pose_bot (tab) :
     else :
         return 
 
+#----- A garder -----
 tableau = plateau()
 printTab(tableau)
 
 example()
+#-------------------
 
-nombre = input("Choisissez un nombre pour placer votre croix: ")
-pose_player(tableau,nombre)
+while cases_libres(tableau) != [] :
+    #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
+    nombre = input("Choisissez un nombre pour placer votre croix: ")
+    pose_player(tableau,nombre)
 
 printTab(tableau)
 
