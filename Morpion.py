@@ -34,23 +34,32 @@ def example() :
 def pose_player(tab,nb) :
     '''Fonction qui permet au joueur de placer son symbol en fonction du nombre qu'il rentre''' 
     if nb == '1' :
-        tab[0][0] = 'X' 
+        if tab[0][0] == ' ':
+            tab[0][0] = 'X' 
     if nb == '2' :
-        tab[0][1] = 'X' 
+        if tab[0][1] == ' ':
+            tab[0][1] = 'X' 
     if nb == '3' :
-        tab[0][2] = 'X' 
+        if tab[0][2] == ' ':
+            tab[0][2] = 'X' 
     if nb == '4' :
-        tab[1][0] = 'X' 
+        if tab[1][0] == ' ':
+            tab[1][0] = 'X' 
     if nb == '5' :
-        tab[1][1] = 'X' 
+        if tab[1][1] == ' ':
+            tab[1][1] = 'X' 
     if nb == '6' :
-        tab[1][2] = 'X' 
+        if tab[1][2] == ' ':
+            tab[1][2] = 'X' 
     if nb == '7' :
-        tab[2][0] = 'X' 
+        if tab[2][0] == ' ':
+            tab[2][0] = 'X' 
     if nb == '8' :
-        tab[2][1] = 'X' 
+        if tab[2][1] == ' ':
+            tab[2][1] = 'X' 
     if nb == '9' :
-        tab[2][2] = 'X' 
+        if tab[2][2] == ' ':
+            tab[2][2] = 'X' 
     
 def cases_libres (tab):
     '''Fonction qui renovoie une liste contenant les cases vides, elle va servir à arreter le jeu si cette liste est vide'''
@@ -85,12 +94,8 @@ while cases_libres(tableau) != [] :
     #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
     nombre = input("Choisissez un nombre pour placer votre croix: ")
     pose_player(tableau,nombre)
+    pose_bot(tableau)
+    printTab(tableau)
 
-printTab(tableau)
 
-print(cases_libres(tableau))
 
-pose_bot(tableau)
-
-printTab(tableau)
-    
