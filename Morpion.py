@@ -74,11 +74,12 @@ def cases_libres (tab):
 def pose_bot (tab) :
     '''Fonction qui va placer un signe du bot aléatoirement sur la grille'''
     liste =  cases_libres(tab) 
+    print(liste)
     #Cette liste de tuple contenant les coordonnées libres va permettre de ne pas placer de symbol sur une case déja prise
     #Mais aussi à savoir si le bot peut placer un symbol si la grille est pleine 
     if liste != []:
         coo = r.choice(liste)
-        tab[coo[0]][coo[0]] = 'O' 
+        tab[coo[0]][coo[1]] = 'O' 
         return 
     else :
         return 
@@ -95,7 +96,9 @@ while cases_libres(tableau) != [] :
     nombre = input("Choisissez un nombre pour placer votre croix: ")
     pose_player(tableau,nombre)
     printTab(tableau)
+    print(cases_libres(tableau))
     pose_bot(tableau)
+    print(cases_libres(tableau))
     printTab(tableau)
 
 
