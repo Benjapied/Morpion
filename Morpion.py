@@ -74,7 +74,6 @@ def cases_libres (tab):
 def pose_bot (tab) :
     '''Fonction qui va placer un signe du bot aléatoirement sur la grille'''
     liste =  cases_libres(tab) 
-    print(liste)
     #Cette liste de tuple contenant les coordonnées libres va permettre de ne pas placer de symbol sur une case déja prise
     #Mais aussi à savoir si le bot peut placer un symbol si la grille est pleine 
     if liste != []:
@@ -83,6 +82,26 @@ def pose_bot (tab) :
         return 
     else :
         return 
+
+def checkAll(tab,sign):
+    if tab[0][0] == str(sign) and tab[0][1] == str(sign) and tab[0][2] == str(sign) :
+        return True
+    if tab[1][0] == str(sign) and tab[1][1] == str(sign) and tab[1][2] == str(sign) :
+        return True
+    if tab[2][0] == str(sign) and tab[2][1] == str(sign) and tab[2][2] == str(sign) :
+        return True
+    if tab[0][0] == str(sign) and tab[1][0] == str(sign) and tab[2][0] == str(sign) :
+        return True
+    if tab[0][1] == str(sign) and tab[1][1] == str(sign) and tab[2][1] == str(sign) :
+        return True
+    if tab[0][2] == str(sign) and tab[1][2] == str(sign) and tab[2][2] == str(sign) :
+        return True
+    if tab[0][0] == str(sign) and tab[1][1] == str(sign) and tab[2][2] == str(sign) :
+        return True
+    if tab[0][2] == str(sign) and tab[1][1] == str(sign) and tab[2][0] == str(sign) :
+        return True
+    else:
+        return False
 
 #----- A garder -----
 tableau = plateau()
@@ -96,10 +115,12 @@ while cases_libres(tableau) != [] :
     nombre = input("Choisissez un nombre pour placer votre croix: ")
     pose_player(tableau,nombre)
     printTab(tableau)
-    print(cases_libres(tableau))
+    if checkAll(tableau,'X') == True :
+        break
     pose_bot(tableau)
-    print(cases_libres(tableau))
     printTab(tableau)
+    if checkAll(tableau,'0') == True :
+        break
 
 
 
