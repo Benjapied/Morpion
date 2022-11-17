@@ -60,6 +60,8 @@ def pose_player(tab,nb) :
     if nb == '9' :
         if tab[2][2] == ' ':
             tab[2][2] = 'X' 
+    else :
+        print("Entrez un nombre valide")
     
 def cases_libres (tab):
     '''Fonction qui renovoie une liste contenant les cases vides, elle va servir à arreter le jeu si cette liste est vide'''
@@ -84,6 +86,7 @@ def pose_bot (tab) :
         return 
 
 def checkAll(tab,sign):
+    '''Fonction qui vérifier à chaque tour si il y a un alignement de trois signes mis en parametre'''
     if tab[0][0] == str(sign) and tab[0][1] == str(sign) and tab[0][2] == str(sign) :
         return True
     if tab[1][0] == str(sign) and tab[1][1] == str(sign) and tab[1][2] == str(sign) :
