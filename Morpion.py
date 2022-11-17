@@ -116,10 +116,12 @@ while cases_libres(tableau) != [] :
     pose_player(tableau,nombre)
     printTab(tableau)
     if checkAll(tableau,'X') == True :
+        print("Le joueur a gagné")
         break
     pose_bot(tableau)
     printTab(tableau)
     if checkAll(tableau,'0') == True :
+        print("Le bot a gagné")
         break
 
 
