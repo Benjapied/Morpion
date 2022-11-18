@@ -16,20 +16,16 @@ On définit la fonction printTab qui va afficher un tableau en format tableau et
         Afficher espace vide pour aller à la ligne
 
 On définit une fonction example qui montre au joueur quel chiffre rentrer pour jouer un coup
-def example() :
-    '''Cette fonction affiche quelle case de la grille correspond à quel chiffre'''
     on créer une liste vide nommée tab
-    on créer une variable incrementeur
-    tab = []
-    incrémenteur = 1
-    for i in range (3) :
-        tab2 = []
-        for j in range (3) :
-            tab2.append(incrémenteur)
-            incrémenteur = incrémenteur + 1
-        tab.append(tab2)
-    print("Pour placer votre symbole, entrez un chiffre comme dans l'exemple ci-dessous")
-    printTab(tab)
+    on créer une variable incrementeur, on lui asigne 1
+    Pour i allant de 0 à 3
+        on créer une variable tab2 contenant une liste vide
+        Pour j allant de 0 à 3
+            on ajoute à tab2 incrementeur 
+            on ajoute 1 à incrementeur
+        on ajoute tab2 à tab
+    On affiche "Pour placer votre symbole, entrez un chiffre comme dans l'exemple ci-dessous"
+    On appelle la fonction printTab de paramètre tab
 
 def pose_player(tab,nb) :
     '''Fonction qui permet au joueur de placer son symbol en fonction du nombre qu'il rentre''' 
