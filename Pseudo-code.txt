@@ -57,67 +57,60 @@ On définit une fonction pose_player avec en parametre tab et nb, elle va poser 
              Alors on met à tableau à l'indice 2, 2 la valeur 'X'
     Sinon
         On affiche "Entrez un nombre valide" 
-    
-def cases_libres (tab):
-    '''Fonction qui renovoie une liste contenant les cases vides, elle va servir à arreter le jeu si cette liste est vide'''
-    liste = []
-    for i in range (3) :
-        for j in range(3) :
-            if tab[i][j] == ' ' :
-                liste.append((i,j))
-    #Cette liste contient des tuples des coordonnées des cases libres
-    return liste
+
+On définit une fonction cases_libres avec en parametre tab (une grille) qui va renvoyer la liste des coordonnées des cases libres d'une grille 
+    On définit une liste vide (Liste)
+    Pour i allant de 0 à 3 
+        Pour j allant de 0 à 3
+            Si tab d'indice i, j est égal à un espace 
+                Alors on ajoute le tuple i,j à la liste (liste)
+    on retourn la liste (liste)
                 
-def pose_bot (tab) :
-    '''Fonction qui va placer un signe du bot aléatoirement sur la grille'''
-    liste =  cases_libres(tab) 
-    #Cette liste de tuple contenant les coordonnées libres va permettre de ne pas placer de symbol sur une case déja prise
-    #Mais aussi à savoir si le bot peut placer un symbol si la grille est pleine 
-    if liste != []:
-        coo = r.choice(liste)
-        tab[coo[0]][coo[1]] = 'O' 
-        return 
-    else :
-        return 
+On définit la fonction pose_bot avec en parametre tab qui va placer aléatoirement un signe adverse 
+    On créer une variable liste et on y met la fonction cases_libres de parametre tab 
+    Si la liste n'est pas vide 
+        Alors met dans une varaible coo un tuple aléatoire de la liste via une commande random choice qu'on admet 
+        On met un '0' à tab d'indice coo d'indice 0 et de coo d'indice 1 
+        on retourne pour finir la fonction 
+    Sinon 
+        On retuorne pour finir la fonction
 
-def checkAll(tab,sign):
-    '''Fonction qui vérifier à chaque tour si il y a un alignement de trois signes mis en parametre'''
-    if tab[0][0] == str(sign) and tab[0][1] == str(sign) and tab[0][2] == str(sign) :
-        return True
-    if tab[1][0] == str(sign) and tab[1][1] == str(sign) and tab[1][2] == str(sign) :
-        return True
-    if tab[2][0] == str(sign) and tab[2][1] == str(sign) and tab[2][2] == str(sign) :
-        return True
-    if tab[0][0] == str(sign) and tab[1][0] == str(sign) and tab[2][0] == str(sign) :
-        return True
-    if tab[0][1] == str(sign) and tab[1][1] == str(sign) and tab[2][1] == str(sign) :
-        return True
-    if tab[0][2] == str(sign) and tab[1][2] == str(sign) and tab[2][2] == str(sign) :
-        return True
-    if tab[0][0] == str(sign) and tab[1][1] == str(sign) and tab[2][2] == str(sign) :
-        return True
-    if tab[0][2] == str(sign) and tab[1][1] == str(sign) and tab[2][0] == str(sign) :
-        return True
-    else:
-        return False
+On définit une fonction checkAll avec en parametre tab et un signe (X ou 0) qui va analyser la grille pour voir si quelqu'un a gagné
+    si tab d'indice 0, 0 est égal au signe et tab d'indice 0, 1 est égal au signe et tab d'indice 0, 2 est égal au signe 
+        Alors on retourne vrai 
+    si tab d'indice 1, 0 est égal au signe et tab d'indice 1, 1 est égal au signe et tab d'indice 1, 2 est égal au signe 
+        Alors on retourne vrai 
+    si tab d'indice 2, 0 est égal au signe et tab d'indice 2, 1 est égal au signe et tab d'indice 2, 2 est égal au signe 
+        Alors on retourne vrai 
+    si tab d'indice 0, 0 est égal au signe et tab d'indice 1, 0 est égal au signe et tab d'indice 2, 0 est égal au signe 
+        Alors on retourne vrai 
+    si tab d'indice 0, 1 est égal au signe et tab d'indice 1, 1 est égal au signe et tab d'indice 2, 1 est égal au signe 
+        Alors on retourne vrai 
+    si tab d'indice 0, 2 est égal au signe et tab d'indice 1, 2 est égal au signe et tab d'indice 2, 2 est égal au signe 
+        Alors on retourne vrai 
+    si tab d'indice 0, 0 est égal au signe et tab d'indice 1, 1 est égal au signe et tab d'indice 2, 2 est égal au signe 
+        Alors on retourne vrai 
+    si tab d'indice 0, 2 est égal au signe et tab d'indice 1, 1 est égal au signe et tab d'indice 2, 0 est égal au signe 
+        Alors on retourne vrai 
+    Sinon 
+        on retourne faux
 
-#----- A garder -----
-tableau = plateau()
-printTab(tableau)
+on créer une variable tableau et on y appelle la fonction plateau
+on appelle la fonction prinTab de parametre tableau
 
-example()
-#-------------------
+On appelle la fonction example pour montrer au joueur comment jouer
 
-while cases_libres(tableau) != [] :
-    #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
-    nombre = input("Choisissez un nombre pour placer votre croix: ")
-    pose_player(tableau,nombre)
-    printTab(tableau)
-    if checkAll(tableau,'X') == True :
-        print("Le joueur a gagné")
-        break
-    pose_bot(tableau)
-    printTab(tableau)
-    if checkAll(tableau,'0') == True :
-        print("Le bot a gagné")
-        break
+tant que cases_libres est différent de vide 
+    on met dans la variable nombre le chiffre du joueur via une entrée utilisateur en affichant "Choisissez un nombre pour placer votre croix: "
+    on appelle la fonction pose_player avec en parametre tableau et nombre
+    on appelle la fonction printTab de parametre tableau 
+    si checkAll de parametre tableau et le signe 'X' est égal à vrai 
+        alors on affiche ("Le joueur a gagné"))
+        et on casse la boucle 
+    on appelle la fonction pose_bot avec en parametre tableau
+    on appelle la fonction printTab de parametre tableau 
+    si checkAll de parametre tableau et le signe '0' est égal à vrai 
+        alors on affiche ("Le bot a gagné"))
+        et on casse la boucle
+
+
