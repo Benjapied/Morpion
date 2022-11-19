@@ -27,37 +27,36 @@ On définit une fonction example qui montre au joueur quel chiffre rentrer pour 
     On affiche "Pour placer votre symbole, entrez un chiffre comme dans l'exemple ci-dessous"
     On appelle la fonction printTab de paramètre tab
 
-def pose_player(tab,nb) :
-    '''Fonction qui permet au joueur de placer son symbol en fonction du nombre qu'il rentre''' 
-    if nb == '1' :
-        if tab[0][0] == ' ':
-            tab[0][0] = 'X' 
-    if nb == '2' :
-        if tab[0][1] == ' ':
-            tab[0][1] = 'X' 
-    if nb == '3' :
-        if tab[0][2] == ' ':
-            tab[0][2] = 'X' 
-    if nb == '4' :
-        if tab[1][0] == ' ':
-            tab[1][0] = 'X' 
-    if nb == '5' :
-        if tab[1][1] == ' ':
-            tab[1][1] = 'X' 
-    if nb == '6' :
-        if tab[1][2] == ' ':
-            tab[1][2] = 'X' 
-    if nb == '7' :
-        if tab[2][0] == ' ':
-            tab[2][0] = 'X' 
-    if nb == '8' :
-        if tab[2][1] == ' ':
-            tab[2][1] = 'X' 
-    if nb == '9' :
-        if tab[2][2] == ' ':
-            tab[2][2] = 'X' 
-    else :
-        print("Entrez un nombre valide")
+On définit une fonction pose_player avec en parametre tab et nb, elle va poser le symbole du joueur
+    si nb est égal à 1
+        Si le tableau à l'indice 0, 0  est égal à un espace 
+            Alors on met à tableau à l'indice 0, 0 la valeur 'X'
+    si nb est égal à 2
+        Si le tableau à l'indice 0, 1  est égal à un espace
+            Alors on met à tableau à l'indice 0, 1 la valeur 'X'
+    si nb est égal à 3
+        Si le tableau à l'indice 0, 2  est égal à un espace
+            Alors on met à tableau à l'indice 0, 2 la valeur 'X'
+    si nb est égal à 4
+        Si le tableau à l'indice 1, 0  est égal à un espace
+            Alors on met à tableau à l'indice 1, 0 la valeur 'X'
+    si nb est égal à 5
+        Si le tableau à l'indice 1, 1  est égal à un espace
+            Alors on met à tableau à l'indice 1, 1 la valeur 'X'
+    si nb est égal à 6
+        Si le tableau à l'indice 1, 2 est égal à un espace
+            Alors on met à tableau à l'indice 1, 2 la valeur 'X'
+   si nb est égal à 7
+        Si le tableau à l'indice 2, 0  est égal à un espace
+            Alors on met à tableau à l'indice 2, 0 la valeur 'X'
+   si nb est égal à 8
+        Si le tableau à l'indice 2, 1  est égal à un espace
+            Alors on met à tableau à l'indice 2, 1 la valeur 'X'
+   si nb est égal à 9
+        Si le tableau à l'indice 2, 2  est égal à un espace
+             Alors on met à tableau à l'indice 2, 2 la valeur 'X'
+    Sinon
+        On affiche "Entrez un nombre valide" 
     
 def cases_libres (tab):
     '''Fonction qui renovoie une liste contenant les cases vides, elle va servir à arreter le jeu si cette liste est vide'''
