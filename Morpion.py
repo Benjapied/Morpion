@@ -112,7 +112,7 @@ printTab(tableau)
 example()
 #-------------------
 
-while cases_libres(tableau) != [] :
+'''while cases_libres(tableau) != [] :
     #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
     nombre = input("Choisissez un nombre pour placer votre croix: ")
     pose_player(tableau,nombre)
@@ -124,7 +124,108 @@ while cases_libres(tableau) != [] :
     printTab(tableau)
     if checkAll(tableau,'0') == True :
         print("Le bot a gagné")
-        break
+        break'''
 
 
+#Bot inbattable 
+#On définit une fonction qui va placer des symbols 
 
+def firstHit (tab) :
+    if tab[1][1] == ' ' :
+        tab[1][1] = '0' 
+    else :
+        tab[0][0] = '0'
+
+def bot2fou (tab) :
+    #Si c'est le premier ou le deuxieme coup
+    print(len(cases_libres(tab)))
+    if len(cases_libres(tab)) == 9 or len(cases_libres(tab)) == 8 : 
+        firstHit(tab)
+    temp = mybWin (tableau, 'X')
+    if temp != False :
+        if temp == 0 :
+            if tab[0][0] == ' ' :
+                tab[0][0] = '0' 
+            if tab[0][1] == ' ' :
+                tab[0][1] = '0' 
+            if tab[0][2] == ' ' :
+                tab[0][2] = '0' 
+        if temp == 1 :
+            if tab[1][0] == ' ' :
+                tab[1][0] = '0' 
+            if tab[1][1] == ' ' :
+                tab[1][1] = '0' 
+            if tab[1][2] == ' ' :
+                tab[1][2] = '0' 
+        if temp == 2 :
+            if tab[2][0] == ' ' :
+                tab[2][0] = '0' 
+            if tab[2][1] == ' ' :
+                tab[2][1] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+        if temp == 2 :
+            if tab[2][0] == ' ' :
+                tab[2][0] = '0' 
+            if tab[2][1] == ' ' :
+                tab[2][1] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+        if temp == 2 :
+            if tab[2][0] == ' ' :
+                tab[2][0] = '0' 
+            if tab[2][1] == ' ' :
+                tab[2][1] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+        if temp == 2 :
+            if tab[2][0] == ' ' :
+                tab[2][0] = '0' 
+            if tab[2][1] == ' ' :
+                tab[2][1] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+        if temp == 2 :
+            if tab[2][0] == ' ' :
+                tab[2][0] = '0' 
+            if tab[2][1] == ' ' :
+                tab[2][1] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+        
+
+    
+def align(tab) :
+    '''Fonction qui crée une liste avec des listes contenant les alignements de la grilles.
+    Il y en a 8 '''
+    liste = []
+    liste.append(tab[0])
+    liste.append(tab[1])
+    liste.append(tab[2])
+    l2 = []
+    for i in range (3) :
+        l2.append(tab[0][i])
+        l2.append(tab[1][i])
+        l2.append(tab[2][i])
+        liste.append(l2)
+        l2 = []
+    liste.append([tab[0][0],tab[1][1],tab[2][2]])
+    liste.append([tab[2][0],tab[1][1],tab[0][2]])
+    print(liste)
+    return liste
+
+def mybWin (tab,sign) :
+    ali = align(tab)
+    for i in range (len(ali)) :
+        if str(sign) in ali[i] and str(sign) in ali[i] and ' ' in ali[i] :
+            return i 
+    return False
+
+tableau[1][1] = 'X' 
+tableau[1][2] = 'X' 
+
+bot2fou(tableau)
+
+printTab(tableau)
+
+print(mybWin(tableau, 'X'))
