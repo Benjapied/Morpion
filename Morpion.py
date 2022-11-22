@@ -32,35 +32,36 @@ def example() :
 
 def pose_player(tab,nb) :
     '''Fonction qui permet au joueur de placer son symbol en fonction du nombre qu'il rentre''' 
-    if nb == '1' :
-        if tab[0][0] == ' ':
-            tab[0][0] = 'X' 
-    if nb == '2' :
-        if tab[0][1] == ' ':
-            tab[0][1] = 'X' 
-    if nb == '3' :
-        if tab[0][2] == ' ':
-            tab[0][2] = 'X' 
-    if nb == '4' :
-        if tab[1][0] == ' ':
-            tab[1][0] = 'X' 
-    if nb == '5' :
-        if tab[1][1] == ' ':
-            tab[1][1] = 'X' 
-    if nb == '6' :
-        if tab[1][2] == ' ':
-            tab[1][2] = 'X' 
-    if nb == '7' :
-        if tab[2][0] == ' ':
-            tab[2][0] = 'X' 
-    if nb == '8' :
-        if tab[2][1] == ' ':
-            tab[2][1] = 'X' 
-    if nb == '9' :
-        if tab[2][2] == ' ':
-            tab[2][2] = 'X' 
+    if nb == '1' and tab[0][0] == ' ':
+        tab[0][0] = 'X' 
+        return
+    if nb == '2' and tab[0][1] == ' ' :
+        tab[0][1] = 'X' 
+        return
+    if nb == '3' and tab[0][2] == ' ':
+        tab[0][2] = 'X' 
+        return
+    if nb == '4' and tab[1][0] == ' ':
+        tab[1][0] = 'X'
+        return 
+    if nb == '5' and tab[1][1] == ' ':
+        tab[1][1] = 'X' 
+        return
+    if nb == '6' and tab[1][2] == ' ':
+        tab[1][2] = 'X'
+        return 
+    if nb == '7' and tab[2][0] == ' ':
+        tab[2][0] = 'X'
+        return 
+    if nb == '8' and tab[2][1] == ' ':
+        tab[2][1] = 'X'
+        return 
+    if nb == '9' and tab[2][2] == ' ' :
+        tab[2][2] = 'X'
+        return 
     else :
-        print("Entrez un nombre valide")
+        nb = input("Entrez un nombre valide: ")
+        pose_player(tab,nb) 
     
 def cases_libres (tab):
     '''Fonction qui renovoie une liste contenant les cases vides, elle va servir à arreter le jeu si cette liste est vide'''
@@ -105,27 +106,6 @@ def checkAll(tab,sign):
     else:
         return False
 
-#----- A garder -----
-tableau = plateau()
-printTab(tableau)
-
-example()
-#-------------------
-
-'''while cases_libres(tableau) != [] :
-    #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
-    nombre = input("Choisissez un nombre pour placer votre croix: ")
-    pose_player(tableau,nombre)
-    printTab(tableau)
-    if checkAll(tableau,'X') == True :
-        print("Le joueur a gagné")
-        break
-    pose_bot(tableau)
-    printTab(tableau)
-    if checkAll(tableau,'0') == True :
-        print("Le bot a gagné")
-        break'''
-
 
 #Bot inbattable 
 #On définit une fonction qui va placer des symbols 
@@ -137,64 +117,162 @@ def firstHit (tab) :
         tab[0][0] = '0'
 
 def bot2fou (tab) :
-    #Si c'est le premier ou le deuxieme coup
-    print(len(cases_libres(tab)))
+    #Si c'est le premier ou le deuxieme coup, le bot va placer son signe au centre 
+    temp = mybWin (tableau, '0')
+    temp2 = mybWin (tableau, 'X')
+    print ("temp 1", temp)
+    print ("temp 2", temp2)
     if len(cases_libres(tab)) == 9 or len(cases_libres(tab)) == 8 : 
         firstHit(tab)
-    temp = mybWin (tableau, 'X')
-    if temp != False :
-        if temp == 0 :
+        return
+    elif temp != False :
+        if temp == 1 :
             if tab[0][0] == ' ' :
                 tab[0][0] = '0' 
             if tab[0][1] == ' ' :
                 tab[0][1] = '0' 
             if tab[0][2] == ' ' :
                 tab[0][2] = '0' 
-        if temp == 1 :
+            return
+        if temp == 2 :
+            if tab[1][0] == ' ' :
+                tab[1][0] = '0' 
+            if tab[1][1] == ' ' :
+                tab[1][1] = '0' 
+            if tab[1][2] == ' ' :
+                tab[1][2] = '0'
+            return 
+        if temp == 3 :
+            if tab[2][0] == ' ' :
+                tab[2][0] = '0' 
+            if tab[2][1] == ' ' :
+                tab[2][1] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+            return
+        if temp == 4 :
+            if tab[0][0] == ' ' :
+                tab[0][0] = '0' 
+            if tab[1][0] == ' ' :
+                tab[1][0] = '0' 
+            if tab[2][0] == ' ' :
+                tab[2][0] = '0' 
+            return
+        if temp == 5 :
+            if tab[0][1] == ' ' :
+                tab[0][1] = '0' 
+            if tab[1][1] == ' ' :
+                tab[1][1] = '0' 
+            if tab[2][1] == ' ' :
+                tab[2][1] = '0' 
+            return
+        if temp == 6 :
+            if tab[0][2] == ' ' :
+                tab[0][2] = '0' 
+            if tab[1][2] == ' ' :
+                tab[1][2] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+            return
+        if temp == 7 :
+            if tab[0][0] == ' ' :
+                tab[0][0] = '0' 
+            if tab[1][1] == ' ' :
+                tab[1][1] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+            return
+        if temp == 8 :
+            if tab[0][2] == ' ' :
+                tab[0][2] = '0' 
+            if tab[1][1] == ' ' :
+                tab[1][1] = '0' 
+            if tab[2][0] == ' ' :
+                tab[2][0] = '0' 
+            return
+    elif temp2 != False :
+        if temp2 == 1 :
+            if tab[0][0] == ' ' :
+                tab[0][0] = '0' 
+            if tab[0][1] == ' ' :
+                tab[0][1] = '0' 
+            if tab[0][2] == ' ' :
+                tab[0][2] = '0' 
+            return
+        if temp2 == 2 :
             if tab[1][0] == ' ' :
                 tab[1][0] = '0' 
             if tab[1][1] == ' ' :
                 tab[1][1] = '0' 
             if tab[1][2] == ' ' :
                 tab[1][2] = '0' 
-        if temp == 2 :
+            return
+        if temp2 == 3 :
             if tab[2][0] == ' ' :
                 tab[2][0] = '0' 
             if tab[2][1] == ' ' :
                 tab[2][1] = '0' 
             if tab[2][2] == ' ' :
                 tab[2][2] = '0' 
-        if temp == 2 :
+            return
+        if temp2 == 4 :
+            if tab[0][0] == ' ' :
+                tab[0][0] = '0' 
+            if tab[1][0] == ' ' :
+                tab[1][0] = '0' 
             if tab[2][0] == ' ' :
-                tab[2][0] = '0' 
+                tab[2][0] = '0'
+            return 
+        if temp2 == 5 :
+            if tab[0][1] == ' ' :
+                tab[0][1] = '0' 
+            if tab[1][1] == ' ' :
+                tab[1][1] = '0' 
             if tab[2][1] == ' ' :
                 tab[2][1] = '0' 
+            return
+        if temp2 == 6 :
+            if tab[0][2] == ' ' :
+                tab[0][2] = '0' 
+            if tab[1][2] == ' ' :
+                tab[1][2] = '0' 
             if tab[2][2] == ' ' :
                 tab[2][2] = '0' 
-        if temp == 2 :
+            return
+        if temp2 == 7 :
+            if tab[0][0] == ' ' :
+                tab[0][0] = '0' 
+            if tab[1][1] == ' ' :
+                tab[1][1] = '0' 
+            if tab[2][2] == ' ' :
+                tab[2][2] = '0' 
+            return
+        if temp2 == 8 :
+            if tab[0][2] == ' ' :
+                tab[0][2] = '0' 
+            if tab[1][1] == ' ' :
+                tab[1][1] = '0' 
             if tab[2][0] == ' ' :
-                tab[2][0] = '0' 
-            if tab[2][1] == ' ' :
-                tab[2][1] = '0' 
-            if tab[2][2] == ' ' :
-                tab[2][2] = '0' 
-        if temp == 2 :
-            if tab[2][0] == ' ' :
-                tab[2][0] = '0' 
-            if tab[2][1] == ' ' :
-                tab[2][1] = '0' 
-            if tab[2][2] == ' ' :
-                tab[2][2] = '0' 
-        if temp == 2 :
-            if tab[2][0] == ' ' :
-                tab[2][0] = '0' 
-            if tab[2][1] == ' ' :
-                tab[2][1] = '0' 
-            if tab[2][2] == ' ' :
-                tab[2][2] = '0' 
-        
+                tab[2][0] = '0'
+            return
+    elif tab[0][0] == ' ' :
+        tab[0][0] = '0' 
+        return
+    elif tab[0][2] == ' ' :
+        tab[0][2] = '0'
+        return
+    elif tab[2][2] == ' ' :
+        tab[2][2] = '0'
+        return
+    elif tab[2][0] == ' ' :
+        tab[2][0] = '0'
+        return
+    else :
+        coo = r.choice(cases_libres(tab))
+        tab[coo[0]][coo[1]] = '0'
+        return
 
-    
+
 def align(tab) :
     '''Fonction qui crée une liste avec des listes contenant les alignements de la grilles.
     Il y en a 8 '''
@@ -215,17 +293,34 @@ def align(tab) :
     return liste
 
 def mybWin (tab,sign) :
+    '''Cette fonction va voir si il y a un alignement qui est sur le point de gagner
+    si la premiere ligne par exemple contient deux signes, on va renvoyer l'indice de l'alignement ou il y a une possibilité de win'''
     ali = align(tab)
+    #ali contient la liste des alignements
     for i in range (len(ali)) :
-        if str(sign) in ali[i] and str(sign) in ali[i] and ' ' in ali[i] :
-            return i 
+        if ali[i].count(str(sign)) == 2 and ali[i].count(' ') :
+            return i + 1
     return False
 
-tableau[1][1] = 'X' 
-tableau[1][2] = 'X' 
-
-bot2fou(tableau)
-
+#----- A garder -----
+tableau = plateau()
 printTab(tableau)
 
-print(mybWin(tableau, 'X'))
+example()
+#-------------------
+
+while cases_libres(tableau) != [] :
+    #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
+    nombre = input("Choisissez un nombre pour placer votre croix: ")
+    pose_player(tableau,nombre)
+    printTab(tableau)
+    if checkAll(tableau,'X') == True :
+        print("Le joueur a gagné")
+        break
+    print("Le bot a joué ici")
+    bot2fou(tableau)
+    printTab(tableau)
+    if checkAll(tableau,'0') == True :
+        print("Le bot a gagné")
+        break
+
