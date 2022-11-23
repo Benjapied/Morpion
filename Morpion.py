@@ -111,10 +111,25 @@ def checkAll(tab,sign):
 #On définit une fonction qui va placer des symbols 
 
 def firstHit (tab) :
+    '''Cette fonction va faire le premier coup du bot en fonction du premier coup du joueur'''
     if tab[1][1] == ' ' :
         tab[1][1] = '0' 
     else :
         tab[0][0] = '0'
+
+def secondHit (tab) :
+    '''Cette fonction va faire le deuxiemei coup du bot en fonction du deuxieme coup du joueur'''
+    temp1 = align(tab)[6]
+    temp2 = align(tab)[7]
+    if temp1[0] == 'X' and temp1[1] == '0' and temp1[2] == 'X' :
+        tab[0][1] = '0' 
+        return
+    elif temp2[0] == 'X' and temp2[1] == '0' and temp2[2] == 'X' :
+        tab[0][1] = '0'
+        return
+    else :
+        return
+
 
 def bot2fou (tab) :
     #Si c'est le premier ou le deuxieme coup, le bot va placer son signe au centre 
@@ -125,7 +140,11 @@ def bot2fou (tab) :
     if len(cases_libres(tab)) == 9 or len(cases_libres(tab)) == 8 : 
         firstHit(tab)
         return
-    elif temp != False :
+    if len(cases_libres(tab)) == 7 or len(cases_libres(tab)) == 6 : 
+        secondHit(tab)
+        if len(cases_libres(tab)) == 5 or len(cases_libres(tab)) == 4 :
+            return
+    if temp != False :
         if temp == 1 :
             if tab[0][0] == ' ' :
                 tab[0][0] = '0' 
