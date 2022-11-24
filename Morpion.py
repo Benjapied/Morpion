@@ -302,8 +302,16 @@ def mybWin (tab,sign) :
     return False
 
 #----- A garder -----
+print(" __  __                          _                 ")
+print("|  \/  |                        (_)                ")
+print("| \  / |   ___    _ __   _ __    _    ___    _ __  ")
+print("| |\/| |  / _ \  | '__| | '_ \  | |  / _ \  | '_ \ ")
+print("| |  | | | (_) | | |    | |_) | | | | (_) | | | | |")
+print("|_|  |_|  \___/  |_|    | .__/  |_|  \___/  |_| |_|")
+print("                        | |                        ")
+print("                        |_|                        ")
+
 tableau = plateau()
-printTab(tableau)
 
 example()
 #-------------------
