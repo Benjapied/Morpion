@@ -106,7 +106,6 @@ def checkAll(tab,sign):
     else:
         return False
 
-
 #Bot inbattable 
 #On définit une fonction qui va placer des symbols 
 
@@ -130,13 +129,10 @@ def secondHit (tab) :
     else :
         return
 
-
 def bot2fou (tab) :
     #Si c'est le premier ou le deuxieme coup, le bot va placer son signe au centre 
     temp = mybWin (tableau, '0')
     temp2 = mybWin (tableau, 'X')
-    print ("temp 1", temp)
-    print ("temp 2", temp2)
     if len(cases_libres(tab)) == 9 or len(cases_libres(tab)) == 8 : 
         firstHit(tab)
         return
@@ -308,7 +304,6 @@ def align(tab) :
         l2 = []
     liste.append([tab[0][0],tab[1][1],tab[2][2]])
     liste.append([tab[2][0],tab[1][1],tab[0][2]])
-    print(liste)
     return liste
 
 def mybWin (tab,sign) :
@@ -342,4 +337,9 @@ while cases_libres(tableau) != [] :
     if checkAll(tableau,'0') == True :
         print("Le bot a gagné")
         break
+    if cases_libres(tableau) == [] :
+        print("Egalité")
+        break 
+
+
 
