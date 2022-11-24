@@ -305,6 +305,9 @@ si answer est égal à Bot
         si checkAll de paramètre tableau et 'X' est égal à Vrai 
             Alors on affiche "Le joueur a gagné"
             On sort de la boucle 
+        si cases_libres de parametre tableau est égal à une liste vide 
+            Alors on affiche "Egalité"
+            On sort de la boucle
         On affiche "Le bot a joué ici"
         On appelle bot2fou de paramètre tableau 
         printTab de paramètre tableau 
@@ -322,6 +325,9 @@ si sinon answer est égal à Ami
         si checkAll de paramètre tableau et 'X' est égal à Vrai 
             Alors on affiche "Le joueur a gagné"
             On sort de la boucle 
+        si cases_libres de parametre tableau est égal à une liste vide 
+            Alors on affiche "Egalité"
+            On sort de la boucle
         on met dans la variable nombre l'entrée utilisateur en affichant "Choisissez un nombre pour placer votre rond: "
         On appelle bot2fou de paramètre tableau 
         printTab de paramètre tableau
