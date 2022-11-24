@@ -345,7 +345,7 @@ elif answer == "Ami" :
         pose_player(tableau,nombre,'X')
         printTab(tableau)
         if checkAll(tableau,'X') == True :
-            print("Le joueur a gagné")
+            print("Le joueur 1 a gagné")
             break
         nombre = input("Choisissez un nombre pour placer votre rond: ")
         pose_player(tableau,nombre,'0')
