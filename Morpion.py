@@ -116,8 +116,8 @@ def secondHit (tab) :
 
 def bot2fou (tab) :
     #Si c'est le premier ou le deuxieme coup, le bot va placer son signe au centre 
-    temp = mybWin (tableau, '0')
-    temp2 = mybWin (tableau, 'X')
+    temp = mybWin (tab, '0')
+    temp2 = mybWin (tab, 'X')
     if len(cases_libres(tab)) == 9 or len(cases_libres(tab)) == 8 : 
         firstHit(tab)
         return
@@ -339,7 +339,7 @@ elif answer == "Ami" :
         if checkAll(tableau,'X') == True :
             print("Le joueur a gagné")
             break
-        nombre = input("Choisissez un nombre pour placer votre croix: ")
+        nombre = input("Choisissez un nombre pour placer votre rond: ")
         pose_player(tableau,nombre,'0')
         printTab(tableau)
         print("Le joueur 2 a joué ici")

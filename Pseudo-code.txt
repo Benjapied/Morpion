@@ -113,4 +113,74 @@ tant que cases_libres est différent de vide
         alors on affiche ("Le bot a gagné"))
         et on casse la boucle
 
+On définit une fonction align de paramètre tab qui créer une liste contenant les alignements de la grilles, il y en a 8
+    On créer une liste vide nommée liste
+    On ajoute à liste le tab d'indice 0
+    On ajoute à liste le tab d'indice 1
+    On ajoute à liste le tab d'indice 2
+    On créer une liste vide l2
+    pour i allant de 0 à 3 
+        On ajoute à L2 tab d'indice 0, i 
+        On ajoute à L2 tab d'indice 1, i 
+        On ajoute à L2 tab d'indice 2, i 
+        On ajoute à liste L2
+    On ajoute à liste tab d'indice 0, 0 et tab d'indice 1, 1 et tab d'indice 2, 2
+    On ajoute à liste tab d'indice 2, 0 et tab d'indice 1, 1 et tab d'indice 0, 2
+    on retourne liste
+
+On définit une fonction mybWin de paramètre tab et sign, cette fonciton va vérifier si une ligne est sur le point d'etre complétée ou non
+    on définit une variable ali qui va contenir la fonction align de paramètre tab
+    pour i allant de 0 à la longueur de ali
+        si ali d'indice i est présente 2 fois dans la liste et un espace vide présent une fois 
+            alors on retourne i + 1
+    On retoure faux
+
+On met dans une variable tableau la fonction plateau 
+on appelle printTab de paramètre tableau 
+
+on appelle la fonction example 
+
+On affiche "Jouer contre un bot ou contre un ami ?"
+On definit une variable answer avec une chaine de caractere vide
+tant que answer est différent de "Bot" et answer est différent de "Ami" etanswer est différent de "Seul" 
+    on met dans la variable answer l'entrée utilisateur en affichant "Bot/ Ami: "
+si answer est égal à Bot 
+    Alors tant que la fonction cases_libres de paramètre tableau estdifférent de liste vide :
+        on met dans la variable nombre l'entrée utilisateur en affichant "Choisissez un nombre pour placer votre croix: "
+        On appelle pose_player de paramètre tableau, nombre et 'X' 
+        On apppelle printTab de paramètre tableau 
+        si checkAll de paramètre tableau et 'X' est égal à Vrai 
+            Alors on affiche "Le joueur a gagné"
+            On sort de la boucle 
+        On affiche "Le bot a joué ici"
+        On appelle bot2fou de paramètre tableau 
+        printTab de paramètre tableau 
+        si checkAll de paramètre tableau et 0 est égal à Vrai :
+            Alors on affiche "Le bot a gagné"
+            On sort de la boucle 
+        si cases_libres de parametre tableau est égal à une liste vide 
+            Alors on affiche "Egalité"
+            On sort de la boucle
+si sinon answer est égal à Ami 
+    Alors tant que la fonction cases_libres de paramètre tableau estdifférent de liste vide :
+        on met dans la variable nombre l'entrée utilisateur en affichant "Choisissez un nombre pour placer votre croix: "
+        On appelle pose_player de paramètre tableau, nombre et 'X' 
+        On apppelle printTab de paramètre tableau 
+        si checkAll de paramètre tableau et 'X' est égal à Vrai 
+            Alors on affiche "Le joueur a gagné"
+            On sort de la boucle 
+        on met dans la variable nombre l'entrée utilisateur en affichant "Choisissez un nombre pour placer votre rond: "
+        On appelle bot2fou de paramètre tableau 
+        printTab de paramètre tableau
+        On affiche "Le joueur 2 a joué ici" 
+        si checkAll de paramètre tableau et 0 est égal à Vrai :
+            Alors on affiche "Le bot a gagné"
+            On sort de la boucle 
+        si cases_libres de parametre tableau est égal à une liste vide 
+            Alors on affiche "Egalité"
+            On sort de la boucle
+si sinon answer est égal à Seul 
+    On met dans une variable tabb une grille 3x3 avec entierement des X 
+    On appelle printTab de paramètre tabb
+    ON affiche "bravo vous avez gagné" 
 
