@@ -30,34 +30,34 @@ def example() :
     print("Pour placer votre symbole, entrez un chiffre comme dans l'exemple ci-dessous")
     printTab(tab)
 
-def pose_player(tab,nb) :
+def pose_player(tab,nb,sign) :
     '''Fonction qui permet au joueur de placer son symbol en fonction du nombre qu'il rentre''' 
     if nb == '1' and tab[0][0] == ' ':
-        tab[0][0] = 'X' 
+        tab[0][0] = str(sign) 
         return
     if nb == '2' and tab[0][1] == ' ' :
-        tab[0][1] = 'X' 
+        tab[0][1] = str(sign)  
         return
     if nb == '3' and tab[0][2] == ' ':
-        tab[0][2] = 'X' 
+        tab[0][2] = str(sign)  
         return
     if nb == '4' and tab[1][0] == ' ':
-        tab[1][0] = 'X'
+        tab[1][0] = str(sign) 
         return 
     if nb == '5' and tab[1][1] == ' ':
-        tab[1][1] = 'X' 
+        tab[1][1] = str(sign)  
         return
     if nb == '6' and tab[1][2] == ' ':
-        tab[1][2] = 'X'
+        tab[1][2] = str(sign) 
         return 
     if nb == '7' and tab[2][0] == ' ':
-        tab[2][0] = 'X'
+        tab[2][0] = str(sign) 
         return 
     if nb == '8' and tab[2][1] == ' ':
-        tab[2][1] = 'X'
+        tab[2][1] = str(sign) 
         return 
     if nb == '9' and tab[2][2] == ' ' :
-        tab[2][2] = 'X'
+        tab[2][2] = str(sign) 
         return 
     else :
         nb = input("Entrez un nombre valide: ")
@@ -323,23 +323,50 @@ printTab(tableau)
 example()
 #-------------------
 
-while cases_libres(tableau) != [] :
-    #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
-    nombre = input("Choisissez un nombre pour placer votre croix: ")
-    pose_player(tableau,nombre)
-    printTab(tableau)
-    if checkAll(tableau,'X') == True :
-        print("Le joueur a gagné")
-        break
-    print("Le bot a joué ici")
-    bot2fou(tableau)
-    printTab(tableau)
-    if checkAll(tableau,'0') == True :
-        print("Le bot a gagné")
-        break
-    if cases_libres(tableau) == [] :
-        print("Egalité")
-        break 
-
+print("Jouer contre un bot ou contre un ami ?")
+answer = ""
+while answer != "Bot" and answer != "Ami" and answer != "Seul" :
+    answer = input("Bot/ Ami: ")
+if answer == "Bot" :
+    while cases_libres(tableau) != [] :
+        #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
+        nombre = input("Choisissez un nombre pour placer votre croix: ")
+        pose_player(tableau,nombre,'X')
+        printTab(tableau)
+        if checkAll(tableau,'X') == True :
+            print("Le joueur a gagné")
+            break
+        print("Le bot a joué ici")
+        bot2fou(tableau)
+        printTab(tableau)
+        if checkAll(tableau,'0') == True :
+            print("Le bot a gagné")
+            break
+        if cases_libres(tableau) == [] :
+            print("Egalité")
+            break 
+elif answer == "Ami" :
+    while cases_libres(tableau) != [] :
+        #On demande au joueur de choisir son chiffre et on place son symbol sur la grille
+        nombre = input("Choisissez un nombre pour placer votre croix: ")
+        pose_player(tableau,nombre,'X')
+        printTab(tableau)
+        if checkAll(tableau,'X') == True :
+            print("Le joueur a gagné")
+            break
+        nombre = input("Choisissez un nombre pour placer votre croix: ")
+        pose_player(tableau,nombre,'0')
+        printTab(tableau)
+        print("Le joueur 2 a joué ici")
+        if checkAll(tableau,'0') == True :
+            print("Le bot a gagné")
+            break
+        if cases_libres(tableau) == [] :
+            print("Egalité")
+            break 
+elif answer == "Seul" :
+    tabb = [['X','X','X'],['X','X','X'],['X','X','X']]
+    printTab(tabb)
+    print("Bravo vous avez gagné")
 
 
