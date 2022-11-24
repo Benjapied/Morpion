@@ -329,6 +329,9 @@ if answer == "Bot" :
         if checkAll(tableau,'X') == True :
             print("Le joueur a gagné")
             break
+        if cases_libres(tableau) == [] :
+            print("Egalité")
+            break 
         print("Le bot a joué ici")
         bot2fou(tableau)
         printTab(tableau)
@@ -346,6 +349,9 @@ elif answer == "Ami" :
         printTab(tableau)
         if checkAll(tableau,'X') == True :
             print("Le joueur 1 a gagné")
+            break
+        if cases_libres(tableau) == [] :
+            print("Egalité")
             break
         nombre = input("Choisissez un nombre pour placer votre rond: ")
         pose_player(tableau,nombre,'0')
