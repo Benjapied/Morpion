@@ -72,18 +72,6 @@ def cases_libres (tab):
                 liste.append((i,j))
     #Cette liste contient des tuples des coordonnées des cases libres
     return liste
-                
-def pose_bot (tab) :
-    '''Fonction qui va placer un signe du bot aléatoirement sur la grille'''
-    liste =  cases_libres(tab) 
-    #Cette liste de tuple contenant les coordonnées libres va permettre de ne pas placer de symbol sur une case déja prise
-    #Mais aussi à savoir si le bot peut placer un symbol si la grille est pleine 
-    if liste != []:
-        coo = r.choice(liste)
-        tab[coo[0]][coo[1]] = 'O' 
-        return 
-    else :
-        return 
 
 def checkAll(tab,sign):
     '''Fonction qui vérifier à chaque tour si il y a un alignement de trois signes mis en parametre'''
@@ -105,9 +93,6 @@ def checkAll(tab,sign):
         return True
     else:
         return False
-
-#Bot inbattable 
-#On définit une fonction qui va placer des symbols 
 
 def firstHit (tab) :
     '''Cette fonction va faire le premier coup du bot en fonction du premier coup du joueur'''
@@ -359,7 +344,7 @@ elif answer == "Ami" :
         printTab(tableau)
         print("Le joueur 2 a joué ici")
         if checkAll(tableau,'0') == True :
-            print("Le bot a gagné")
+            print("Le joueur 2 a gagné")
             break
         if cases_libres(tableau) == [] :
             print("Egalité")
@@ -368,5 +353,6 @@ elif answer == "Seul" :
     tabb = [['X','X','X'],['X','X','X'],['X','X','X']]
     printTab(tabb)
     print("Bravo vous avez gagné")
+
 
 
