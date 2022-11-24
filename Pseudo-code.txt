@@ -95,11 +95,6 @@ On définit une fonction checkAll avec en parametre tab et un signe (X ou 0) qui
     Sinon 
         on retourne faux
 
-on créer une variable tableau et on y appelle la fonction plateau
-on appelle la fonction prinTab de parametre tableau
-
-On appelle la fonction example pour montrer au joueur comment jouer
-
 tant que cases_libres est différent de vide 
     on met dans la variable nombre le chiffre du joueur via une entrée utilisateur en affichant "Choisissez un nombre pour placer votre croix: "
     on appelle la fonction pose_player avec en parametre tableau et nombre
@@ -112,6 +107,164 @@ tant que cases_libres est différent de vide
     si checkAll de parametre tableau et le signe '0' est égal à vrai 
         alors on affiche ("Le bot a gagné"))
         et on casse la boucle
+
+On définit une fonction firstHit avec en paramètre tab qui va définir le premier mouvement du bot
+    si l'élément d'index 1 de la liste d'index 1 dans le tableau tab est égal à une chaine de caractère vide 
+        alors on assigne à ce même élément un 0 en str
+    Sinon
+        alors on assigne à l'élément d'index 0 de la liste d'index 0 du tableau tab un str de 0
+
+On définit une fonction secondHit avec en paramètre un tableau tab qui va définir le second mouvement du bot
+    on assigne à la variable temp1 l'élément d'index 6 du retour de l'appel de la fonction align avec tab
+    on assigne à la variable temp2 l'élément d'index 7 du retour de l'appel de la fonction align avec tab
+    si les éléments d'index 0 et d'index 2 de la liste temp1 sont égals à un str de X et que l'élément d'index 1 de la liste temp1 est égal à un str de 0
+        alors l'élément d'index 1 de la liste d'index 0 du tableau tab est égal à un str de 0
+        on retourne une chaine vide pour arrêter la fonction
+    sinon si les éléments d'index 0 et d'index 2 de la liste temp2 sont égals à un str de X et que l'élément d'index 1 de la liste temp2 est égal à un str de 0
+        alors l'élément d'index 1 de la liste d'index 0 du tableau tab est égal à 0
+        on retourne une chaine vide pour arrêter la fonction
+    sinon 
+        alors on retourne une chaine vide pour arrêter la fonction
+
+On définit une fonction bot2fou avec en paramètre un tableau tab et qui va faire le mouvement du bot pour chaque tour
+    on assigne à la variable temp le retour de l'appel de la fonction myBwin prennant en paramètre tableau et un str de 0
+    on assigne à la variable temp2 le retour de l'appel de la fonction myBwin prennant en paramètre tableau et un str de X
+    si la longueur de la liste du retour de l'appel de la fonction cases_libres prennant en paramètre tab est égal à 9 ou à 8
+        alors on appelle la fonction firstHit avec en paramètre tab
+        on retourne une chaine vide pour arrêter la fonction
+    si la longueur de la liste du retour de l'appel de la fonction cases_libres prennant en paramètre tab est égal à 7 ou 6
+        alors on appelle la fonction secondHit avec en paramètre tab
+        on retourne une chaîne vide pour arrêter la fonction
+    si la variable temp est différent du booléen False
+        si la variable temp est égale à 1
+            si l'élément d'index 0 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp est égale à 2
+            si l'élément d'index 0 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp est égale à 3
+            si l'élément d'index 0 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp est égale à 4
+            si l'élément d'index 0 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 0 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 0 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp est égale à 5
+            si l'élément d'index 1 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp est égale à 6
+            si l'élément d'index 2 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp est égale à 7
+            si l'élément d'index 0 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp est égale à 8
+            si l'élément d'index 2 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 0 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+    sinon si la variable temp2 est différent du booléen False
+        si la variable temp2 est égale à 1
+            si l'élément d'index 0 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp2 est égale à 2
+             si l'élément d'index 0 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction 
+        si la variable temp2 est égale à 3
+            si l'élément d'index 0 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp2 est égale à 4
+            si l'élément d'index 0 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 0 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 0 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable tem2 est égale à 5
+            si l'élément d'index 1 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp2 est égale à 6
+            si l'élément d'index 2 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp2 est égale à 7
+            si l'élément d'index 0 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 2 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
+        si la variable temp2 est égale à 8
+            si l'élément d'index 2 de la liste d'index 0 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 1 de la liste d'index 1 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            si l'élément d'index 0 de la liste d'index 2 de tab est un str vide
+                alors on assigne à cet élément un str de 0
+            on retourne une chaine vide pour arrêter la fonction
 
 On définit une fonction align de paramètre tab qui créer une liste contenant les alignements de la grilles, il y en a 8
     On créer une liste vide nommée liste
